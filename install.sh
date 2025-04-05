@@ -1,7 +1,7 @@
 #!/bin/bash
 
 POSTGRES_EXPORTER_VERSION=$(curl -s https://api.github.com/repos/prometheus-community/postgres_exporter/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
-read -rp "Enter the port number for the Postgres Exporter (default: 15432): " -e -i "15432" POSTGRES_EXPORTER_PORT
+read -rp "Enter the port number for the Postgres Exporter (default: 9187): " -e -i "9187" POSTGRES_EXPORTER_PORT
 
 if lsof -i:$POSTGRES_EXPORTER_PORT > /dev/null 2>&1; then
     echo "Port $POSTGRES_EXPORTER_PORT is already in use. Please choose another port."
