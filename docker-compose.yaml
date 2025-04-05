@@ -1,0 +1,14 @@
+services:
+  postgres-exporter:
+    image: prom/postgres_exporter:latest
+    ports:
+      - 9187:9187
+    command:
+      - --collector.stat_statements
+    env_file:
+      - .env
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "5"
